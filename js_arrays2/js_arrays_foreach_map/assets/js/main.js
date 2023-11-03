@@ -15,8 +15,10 @@ let getraenke = [
 ]
 
 const myDrinks = getraenke.forEach((drink) => {
-    console.log(drink);
+
+    // console.log(drink);
     document.write(drink + "<br>")
+
 });
 
 /*************************************
@@ -27,6 +29,7 @@ console.log("%c Array-Iteration-Level-1_2", "color:green");
 const newDrinks = getraenke.map((elt) => {
 
     return elt.toUpperCase();
+
 })
 
 console.log(newDrinks);
@@ -74,15 +77,18 @@ let array = [
     78
 ];
 
-const ergebnis = array.sort((num1, num2) => {
-    if (num1 > num2) {
-        return 1
-    } else {
-        return -1
-    }
-});
+// const ergebnis = array.sort((num1, num2) => {
+//     if (num1 > num2) {
+//         return 1
+//     } else {
+//         return -1
+//     }
+// });
 
-console.log(ergebnis.map((x) => x * 2));
+const ergebnis = array.sort((num1, num2) => num1 > num2 ?  1 :  -1).map(num => num * 2);
+
+// console.log(ergebnis.map((x) => x * 2));
+console.log(ergebnis);
 
 /*************************************
  *      Array-Iteration-Level-1_4
@@ -92,8 +98,13 @@ console.log("%c Array-Iteration-Level-1_4", "color:green");
 let fahrenheit = [0, 32, 45, 50, 75, 80, 99, 120];
 
 const umwandeln = fahrenheit.map((elt) => {
-    console.log(Math.round(((elt - 32) / 1.8).toFixed(2)));
+
+    let ergebnis = Math.round(((elt - 32) / 1.8).toFixed(2));
+    return ergebnis;
+
 });
+
+console.log(umwandeln);
 
 /*************************************
  *      Array-Iteration-Level-1_5
@@ -138,16 +149,18 @@ let checkNumber = [
     78
 ];
 
-const check = checkNumber.map((elt) => {
-    if (elt % 3) {
-        return elt;
-    } else {
-        return elt += 100;
-    }
-});
+// const check = checkNumber.map((elt) => {
+//     if (elt % 3) {
+//         return elt;
+//     } else {
+//         return elt += 100;
+//     }
+// });
+
+const check = checkNumber.map((elt) => elt % 3 ? elt : elt += 100);
 
 console.log(check);
-console.clear();
+
 /*************************************
  *      Array-Iteration-Level-1_5
  ************************************/
@@ -160,9 +173,24 @@ let album = [
     "DOGATBEACH.jpg",
 ]
 
-const myAlbum = album.map((elt) => elt.includes(".") ? elt.split(".").splice(0, 1) : elt = "invalid");
-console.log(myAlbum);
+// const myAlbum = album.map((elt) => elt.includes(".") ? elt.split(".").splice(0, 1) : elt = "invalid");
+// console.log(myAlbum);
 
-/*************************************
- *      Array-Iteration-Level-1_5
- ************************************/
+const myAlbum = album.map((elt) => {
+
+    if (elt.includes(".")) {
+
+    let replace1 = elt.replace(".jpg", "");
+    let replace2 = replace1.replace(".GIF", "")
+
+    return replace2;
+
+    } else {
+
+        return elt = "invalid";
+
+    }
+
+});
+
+console.log(myAlbum);
